@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tabber Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="tabber.js"></script>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            font-family: Montserrat, Roboto, Helvetic-Neue, Helvetica, Arial, sans-serif, serif;
+            font-size: 1.24em;
+            color: rgba(24, 24, 24, .98);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #F4F4F4;
+        }
+        
+        body {
+            font-size: 14pt;
+        }
+        
+        .center {
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        #count {
+            font-size: 20pt;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="center">
+    <br>
+    <h1>Tabber Demo</h1>
+    <br>
+    <br>
+    <p>
+        You have this page open in
+        <p id="count"></p> tabs
+    </p>
+
+    <script>
+        window.onload = function () {
+
+            var countEl = document.getElementById('count')
+
+            Tabber.init()
+
+
+            countEl.textContent = Tabber.count()
+
+            Tabber.on('open', function (e) {
+                countEl.textContent = Tabber.count()
+            })
+
+            Tabber.on('close', function (e) {
+                countEl.textContent = Tabber.count()
+            })
+        }
+    </script>
+</body>
+
+</html>
